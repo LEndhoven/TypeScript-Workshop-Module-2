@@ -12,12 +12,10 @@
 import { logText } from "../../lib/log-utils";
 import { Vehicle, Car, Truck, Motorcycle, VehicleType } from "./models";
 
-// ------- Exercise code starts here -------
-
-// Can you change the definition of the `VehicleTypeOf` type such that the code below compiles?
+// EXERCISE: Can you change the definition of the `VehicleTypeOf` type such that the code below compiles?
 type VehicleTypeOf<T = unknown> = Vehicle;
 
-// ------- Verification of the solution. No need to modify the code below -------
+// SOLUTION CHECKER: Code below is to check your solution
 
 // Expect return type of the `fetchVehicles` function to be of `Motorcycle[]`, so we should be able to safely access the `topSpeed` property.
 const allMotorCycles = fetchVehicles(VehicleType.Motorcycle);

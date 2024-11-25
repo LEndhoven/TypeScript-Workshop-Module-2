@@ -21,12 +21,10 @@ import { Shift } from "./model";
  */
 
 
-// EXERCISES
-
 type FullyRequiredShift = Required<Shift>;
 
 
-// Can you improve the definition of the `fullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden?
+// EXERCISE: Can you improve the definition of the `mockFullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden?
 // You are allowed to change the types of the function parameters if necessary.
 // When you do, make sure to also update the creation of the mock objects below.
 // Hint: Try to use only one function parameter
@@ -51,7 +49,7 @@ function mockFullyRequiredShift(id?: string, start?: Date, end?: Date): FullyReq
   }
 }
 
-// For testing purposes, it was needed to create a shift that lacks the required `end` property.
+// EXERCISE: For testing purposes, it was needed to create a shift that lacks the required `end` property.
 // someone decided to use `any` to not run into compile errors.
 // However, this code was written before the `overtimeAllowed` property existed on the `Shift` type.
 // Now, the code is not working anymore because the `overtimeAllowed` property is missing.

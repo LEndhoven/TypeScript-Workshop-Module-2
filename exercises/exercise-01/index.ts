@@ -1,5 +1,5 @@
 /**
- * Exercise 01
+ * Exercise 01 - type assertion
  *
  * You are working on a project that has modelled some domain entities well.
  * One of these entities in of type `Vehicle` and has the following properties:

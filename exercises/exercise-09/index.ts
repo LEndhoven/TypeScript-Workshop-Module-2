@@ -1,5 +1,5 @@
 /**
- * Exercise 09
+ * Exercise 09 - Intersection types
  *
  * A shift can have break windows during which an employee can take a break.
  * However, it is not mandatory for a shift to have break windows.
@@ -15,13 +15,13 @@
 import { logText } from "../../lib/log-utils";
 import { Shift } from "./model";
 
-// Can you improve the definition of the `BreakWindowedShift` type such that the `breakWindows` property is required?
+// EXERCISE: Can you improve the definition of the `BreakWindowedShift` type such that the `breakWindows` property is required?
 // Try not to redeclare the complete structure of the `breakWindows` property
 // Hint: Use an intersection type combined with some TypeScript utility types.
 type BreakWindowedShift = Shift;
 
 
-// SOLUTION CHECKER
+// SOLUTION CHECKER: Code below is to check your solution
 function getBreakWindowedShift(): BreakWindowedShift {
   return {
     start: new Date('2023-01-01T08:00:00'),

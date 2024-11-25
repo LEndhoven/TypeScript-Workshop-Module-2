@@ -1,5 +1,5 @@
 /**
- * Exercise 08
+ * Exercise 08 - Generics
  *
  * This exercise continues from the previous one.
  * As you might have noticed, the number of unique starts retrieved from the `Shift` collection is not correct.
@@ -15,7 +15,7 @@ import { logText } from "../../lib/log-utils";
 import { PERSONS, SHIFTS } from "./data";
 
 
-// Can you make the `idSelector` argument generic such that the test code below this function compiles and runs without errors?
+// EXERCISE: Can you make the `idSelector` argument generic such that the test code below this function compiles and runs without errors?
 // You will also have to change the `unknown` types of the `Map` object at line 25.
 function getUniqueValues<TObject, TKey extends keyof TObject>(items: TObject[], property: TKey, idSelector?: (propertyValue: unknown) => unknown): TObject[TKey][] {
   if (!idSelector) {
@@ -34,7 +34,7 @@ function getUniqueValues<TObject, TKey extends keyof TObject>(items: TObject[], 
   return Array.from(uniqueValueById.values());
 }
 
-
+// SOLUTION CHECKER: Code below is to check your solution
 const uniqueStarts = getUniqueValues(SHIFTS, 'start', (date) => date.valueOf());
 const uniqueFirstNames = getUniqueValues(PERSONS, 'firstName');
 const uniqueFirstNamesCaseInsensitive = getUniqueValues(PERSONS, 'firstName', (name) => name.toLowerCase());

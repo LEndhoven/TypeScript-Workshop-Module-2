@@ -1,5 +1,5 @@
 /**
- * Exercise 03
+ * Exercise 03 - function overloads
  *
  * The application should be able to list all vehicles of a certain brand.
  * Some vehicles are registered, and some are not.
@@ -15,12 +15,13 @@ import { logText } from "../../lib/log-utils";
 import { Vehicle } from "./models";
 import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 
-// Can you add function overloads for this function such that when only registered vehicles requested, the return type is `RegisteredVehicle[]`?
+// EXERCISE: Can you add function overloads for this function such that when only registered vehicles requested, the return type is `RegisteredVehicle[]`?
 // And if the `registeredOnly` property is not set to `true`, the return type is `Vehicle[]`?
 function findVehicles(brand: string, registeredOnly?: boolean): Vehicle[] {
   return [...REGISTERED_VEHICLES, ...(registeredOnly ? [] : UNREGISTERED_VEHICLES)].filter(vehicle => vehicle.brand === brand);
 }
 
+// SOLUTION CHECKER: Code below is to check your solution
 const allBMWs = findVehicles('BMW');
 logText(`There are ${allBMWs.length} BMWs in the collection.`);
 

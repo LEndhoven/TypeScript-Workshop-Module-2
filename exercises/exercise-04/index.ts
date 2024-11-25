@@ -1,5 +1,5 @@
 /**
- * Exercise 04
+ * Exercise 04 - function overloads
  *
  * A feature request has come in to add the possibility to make the `brand` part optional.
  * So it should be possible to search for vehicles by:
@@ -17,7 +17,7 @@ import { logText } from "../../lib/log-utils";
 import { Vehicle } from "./models";
 import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 
-// ------- Exercise code starts here -------
+// EXERCISE:
 // Can you add function overloads for this function such that all requirements are met? So it should be possible to fetch vehicles:
 //
 //  - by providing no arguments at all. In this case, all vehicles should be returned.
@@ -34,8 +34,7 @@ function findVehicles(/** define function parameters */): Vehicle[] {
   return [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES];
 }
 
-// ------- Verification of the solution. No need to modify the code below -------
-
+// SOLUTION CHECKER: Code below is to check your solution
 const allBMWs = findVehicles('BMW');
 logText(`There are ${allBMWs.length} BMWs in the collection.`);
 

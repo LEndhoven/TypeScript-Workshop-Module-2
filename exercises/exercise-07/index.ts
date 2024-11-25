@@ -1,5 +1,5 @@
 /**
- * Exercise 07
+ * Exercise 07 - Generics
  *
  * This exercise continues from the previous one.
  * Now that you have a nice generic function to get all unique values for a given property value of from a list of `Person` objects,
@@ -12,13 +12,13 @@
 import { logText } from "../../lib/log-utils";
 import { PERSONS, SHIFTS } from "./data";
 
-// Can you replace the `unknown` types in the function below with the correct types?
+// EXERCISE: Can you replace the `unknown` types in the function below with the correct types?
 // Hint: Use two generic parameters
 function getUniqueValues(items: unknown, property: unknown): unknown {
   return Array.from(new Set(items.map((item) => item[property])));
 }
 
-
+// SOLUTION CHECKER: Code below is to check your solution
 const uniqueFirstNames = getUniqueValues(PERSONS, 'firstName'); // expected to be string[]
 logText(`The list of person records contains ${uniqueFirstNames.length} unique first names.`);
 const longestName = uniqueFirstNames.reduce((longest, current) => current.length > longest.length ? current : longest, '');
