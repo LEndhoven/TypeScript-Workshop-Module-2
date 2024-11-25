@@ -11,14 +11,14 @@
  * Can you add the neccessary function overloads for the `findVehicles` function?
  */
 
-import { logText } from "lib/log-utils";
-import { RegisteredVehicle, Vehicle } from "./models";
+import { logText } from "../../lib/log-utils";
+import { Vehicle } from "./models";
 import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 
-// Can you add function overloads for this function such that when registered vehicles are requested, the return type is `RegisteredVehicle[]`?
-// And if registered vehicles are not requested, the return type is `Vehicle[]`?
-function findVehicles(brand: string, registered?: boolean): Vehicle[] | RegisteredVehicle[] {
-  return [...UNREGISTERED_VEHICLES, ...(registered ? REGISTERED_VEHICLES : [])].filter(vehicle => vehicle.brand === brand);
+// Can you add function overloads for this function such that when only registered vehicles requested, the return type is `RegisteredVehicle[]`?
+// And if the `registeredOnly` property is not set to `true`, the return type is `Vehicle[]`?
+function findVehicles(brand: string, registeredOnly?: boolean): Vehicle[] {
+  return [...REGISTERED_VEHICLES, ...(registeredOnly ? [] : UNREGISTERED_VEHICLES)].filter(vehicle => vehicle.brand === brand);
 }
 
 const allBMWs = findVehicles('BMW');

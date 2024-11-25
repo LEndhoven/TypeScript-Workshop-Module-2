@@ -10,7 +10,7 @@
  */
 
 import { logText } from "../../lib/log-utils";
-import { PERSONS } from "./data";
+import { PERSONS, SHIFTS } from "./data";
 
 // Can you replace the `unknown` types in the function below with the correct types?
 // Hint: Use two generic parameters

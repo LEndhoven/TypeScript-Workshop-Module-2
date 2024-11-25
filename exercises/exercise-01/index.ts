@@ -10,7 +10,7 @@
  *
  * The code below shows the definition of a `Vehicle` as well as two functions.
  * Further down, an object is created and passed to the two functions.
- * The code compilers, but it has a runtime error.
+ * The code compiles, but it has a runtime error.
  * It also uses the non-null assertion operator (!) which is a bad practice.
  *
  * Your job is to fix the runtime error and to remove the non-null assertion operator (!) from the code.

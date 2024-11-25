@@ -12,8 +12,12 @@
 import { logText } from "../../lib/log-utils";
 import { Vehicle, Car, Truck, Motorcycle, VehicleType } from "./models";
 
+// ------- Exercise code starts here -------
+
 // Can you change the definition of the `VehicleTypeOf` type such that the code below compiles?
 type VehicleTypeOf<T = unknown> = Vehicle;
+
+// ------- Verification of the solution. No need to modify the code below -------
 
 // Expect return type of the `fetchVehicles` function to be of `Motorcycle[]`, so we should be able to safely access the `topSpeed` property.
 const allMotorCycles = fetchVehicles(VehicleType.Motorcycle);
@@ -25,8 +29,6 @@ const allTrucksAndCars = fetchVehicles(VehicleType.Truck, VehicleType.Car);
 const numberOfNonInsuredVehicles = allTrucksAndCars.filter(vehicle => !vehicle.isInsured).length;
 logText(`There are ${numberOfNonInsuredVehicles} non-insured vehicles.`);
 
-
-// You don't have to modify the code below. It is used to simulate a data source query.
 function fetchVehicles<T extends VehicleType>(...vehicleTypes: T[]): VehicleTypeOf<T>[] {
   const carCollection: Car[] = [
     {

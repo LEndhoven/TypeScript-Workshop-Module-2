@@ -3,11 +3,11 @@ export interface Vehicle {
   brand: string;
 }
 
-export interface VehicleOwner {
+interface VehicleOwner {
   id: string;
   name: string;
 }
 
 export interface RegisteredVehicle extends Vehicle {
-  owner: { id: string; name: string};
+  owner: VehicleOwner;
 }
