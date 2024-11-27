@@ -13,6 +13,9 @@ import { logText } from "../../lib/log-utils";
 import { Vehicle, Car, Truck, Motorcycle, VehicleType } from "./models";
 
 // EXERCISE: Can you change the definition of the `VehicleTypeOf` type such that the code below compiles?
+// HINT: Vehicle is a union type of `Car`, `Truck`, and `Motorcycle`. Each of these types have a unique property { type: VehicleType } with a literal type assigned
+// HINT2: Can you use that literal type property to differentiate them using the built-in TypeScript utility `Extract` in the right-hand-side of VehicleTypeOf?
+// HINT3: Check the function `fetchVehicles` to see how the `VehicleType` enum is used as a generic type parameter. Can you do that here as well by replacing the <T = unknown>?
 type VehicleTypeOf<T = unknown> = Vehicle;
 
 // SOLUTION CHECKER: Code below is to check your solution

@@ -5,15 +5,15 @@ import { Shift } from "./model";
  * Exercise 10 - TypeScript utility types
  *
  * For some testing functionality, we need to create a mock object of a `Shift`.
- * We have already defined a type `ShiftWithAllProperties` that requires all properties of a `Shift` to be present.
+ * We have already defined a type `FullyRequiredShift` that requires all properties of a `Shift` to be present.
  *
- * The function `fullyRequiredShift` creates a mock object of a `Shift` with all properties set.
+ * The function `mockFullyRequiredShift` creates a mock object of a `Shift` with all properties set.
  * It has also an option to override some of the default properties.
  *
  * As you can see from the three mocks below, it is not clear which properties are being overridden.
  * And overriding the `start` property is cumbersome, since also a value for the `id` should be provided.
  *
- * Your job is to improve the `fullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden.
+ * Your job is to improve the `mockFullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden.
  *
  * Also, there is a function `mockEndlessShift` that creates a mock object of a `Shift` that has no end date.
  * This function uses `any` to not run into compile errors.
@@ -65,12 +65,12 @@ function mockEndlessShift(): EndlessShift {
   }
 }
 
-// SOLUTION CHECKER -- No need to modify the code below this line
-
 const fullyRequiredShift1 = mockFullyRequiredShift();
 const fullyRequiredShift2 = mockFullyRequiredShift('789');
 const endDate = new Date('2023-01-01T10:00:00');
 const fullyRequiredShift3 = mockFullyRequiredShift(undefined, undefined, endDate);
+
+// SOLUTION CHECKER -- No need to modify the code below this line
 
 const endlessShift = mockEndlessShift();
 logText(`The endless shift starts at ${endlessShift.start.toLocaleString()} and has the 'overtimeAllowed' property set to ${endlessShift.overtimeAllowed}.`);
