@@ -39,7 +39,7 @@ function findVehicles(brandOrRegisteredOnly?: string | boolean, registeredOnly?:
   }
 
   if (typeof brandOrRegisteredOnly === 'boolean') {
-    return REGISTERED_VEHICLES;
+    return brandOrRegisteredOnly ? REGISTERED_VEHICLES : [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES];
   }
 
   if (registeredOnly === false) {
