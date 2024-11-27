@@ -5,7 +5,7 @@ import { Shift } from "./model";
  * Exercise 10 - TypeScript utility types
  *
  * For some testing functionality, we need to create a mock object of a `Shift`.
- * We have already defined a type `mockFullyRequiredShift` that requires all properties of a `Shift` to be present.
+ * We have already defined a type `FullyRequiredShift` that requires all properties of a `Shift` to be present.
  *
  * The function `mockFullyRequiredShift` creates a mock object of a `Shift` with all properties set.
  * It has also an option to override some of the default properties.
