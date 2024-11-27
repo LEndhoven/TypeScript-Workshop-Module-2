@@ -27,7 +27,34 @@ import { BaseOrder, OrderType } from './models';
  */
 
 // EXERCISE: Follow the instructions in the description above and write code directly below this
+interface ConfirmedOrder extends BaseOrder {
+  type: OrderType.Confirmed;
+  confirmationMessage: string;
+}
 
+interface PlannedOrder extends BaseOrder {
+  type: OrderType.Planned;
+  plannedDate: Date;
+}
+
+interface CompletedOrder extends BaseOrder {
+  type: OrderType.Completed;
+  hadIssues: boolean;
+}
+
+type Order = ConfirmedOrder | PlannedOrder | CompletedOrder;
+
+function isConfirmedOrder(order: Order): order is ConfirmedOrder {
+  return order.type === OrderType.Confirmed;
+}
+
+function isPlannedOrder(order: Order): order is PlannedOrder {
+  return order.type === OrderType.Planned;
+}
+
+function isCompletedOrder(order: Order): order is CompletedOrder {
+  return order.type === OrderType.Completed;
+}
 
 
 // SOLUTION-CHECKER: Code below is to check your solution

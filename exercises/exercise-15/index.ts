@@ -18,7 +18,7 @@ import { Trainer, Rating, bestRating, bestRating2 } from './models';
  */
 
 // EXERCISE: Follow the instructions in the description above and write code directly below this
-type TrainerRating = ; // ?
+type TrainerRating = `${Trainer} - ${Rating}`;
 
 
 // SOLUTION-CHECKER: Code below is to check your solution

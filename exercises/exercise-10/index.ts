@@ -5,15 +5,15 @@ import { Shift } from "./model";
  * Exercise 10 - TypeScript utility types
  *
  * For some testing functionality, we need to create a mock object of a `Shift`.
- * We have already defined a type `ShiftWithAllProperties` that requires all properties of a `Shift` to be present.
+ * We have already defined a type `mockFullyRequiredShift` that requires all properties of a `Shift` to be present.
  *
- * The function `fullyRequiredShift` creates a mock object of a `Shift` with all properties set.
+ * The function `mockFullyRequiredShift` creates a mock object of a `Shift` with all properties set.
  * It has also an option to override some of the default properties.
  *
  * As you can see from the three mocks below, it is not clear which properties are being overridden.
  * And overriding the `start` property is cumbersome, since also a value for the `id` should be provided.
  *
- * Your job is to improve the `fullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden.
+ * Your job is to improve the `mockFullyRequiredShift` function such that it becomes easier to use and clearer which properties are being overridden.
  *
  * Also, there is a function `mockEndlessShift` that creates a mock object of a `Shift` that has no end date.
  * This function uses `any` to not run into compile errors.
@@ -31,11 +31,11 @@ type FullyRequiredShift = Required<Shift>;
 // Hint2: Use the `Partial` utility type of TypeScript
 // Hint3: Try using the spread operator (...) for a cleaner and more readable implementation
 //        Note that using the spread operator is not a strict condition in order to make the code compile. It is just a suggestion to make the code more readable.
-function mockFullyRequiredShift(id?: string, start?: Date, end?: Date): FullyRequiredShift {
+function mockFullyRequiredShift(partialShift?: Partial<Shift>): FullyRequiredShift {
   return {
-    id: id ?? '123',
-    start: start ?? new Date('2023-01-01T08:00:00'),
-    end: end ?? new Date('2023-01-01T16:00:00'),
+    id: '123',
+    start: new Date('2023-01-01T08:00:00'),
+    end: new Date('2023-01-01T16:00:00'),
     overtimeAllowed: true,
     employeeId: '456',
     breakWindows: [
@@ -45,7 +45,8 @@ function mockFullyRequiredShift(id?: string, start?: Date, end?: Date): FullyReq
     startLocation: {
       latitude: 12.34,
       longitude: 56.78
-    }
+    },
+    ...partialShift,
   }
 }
 
@@ -56,21 +57,32 @@ function mockFullyRequiredShift(id?: string, start?: Date, end?: Date): FullyReq
 // And because of using `any`, we don't get a compile error either.
 // Can you create a type that represents a shift that has no end date and has the `overtimeAllowed` property?
 // and that is also robust against future changes to the `Shift` type?
-type EndlessShift = any;
+type EndlessShift = Omit<Shift, 'end'> & { overtimeAllowed: boolean };
 
 // When you correctly implement the `EndlessShift` type, the following code should show compile errors that need to be fixed.
 function mockEndlessShift(): EndlessShift {
   return {
-    end: new Date('2023-01-01T16:00:00'),
+    id: '123',
+    start: new Date('2023-01-01T08:00:00'),
+    overtimeAllowed: true,
+    employeeId: '456',
+    breakWindows: [
+      { start: { hourOfDay: 12 }, end: { hourOfDay: 13 } }
+    ],
+    requiredSkills: ['skill1', 'skill2'],
+    startLocation: {
+      latitude: 12.34,
+      longitude: 56.78
+    },
   }
 }
 
-// SOLUTION CHECKER -- No need to modify the code below this line
-
 const fullyRequiredShift1 = mockFullyRequiredShift();
-const fullyRequiredShift2 = mockFullyRequiredShift('789');
+const fullyRequiredShift2 = mockFullyRequiredShift({ id: '789' });
 const endDate = new Date('2023-01-01T10:00:00');
-const fullyRequiredShift3 = mockFullyRequiredShift(undefined, undefined, endDate);
+const fullyRequiredShift3 = mockFullyRequiredShift({ end: endDate });
+
+// SOLUTION CHECKER -- No need to modify the code below this line
 
 const endlessShift = mockEndlessShift();
 logText(`The endless shift starts at ${endlessShift.start.toLocaleString()} and has the 'overtimeAllowed' property set to ${endlessShift.overtimeAllowed}.`);

@@ -16,7 +16,7 @@ import { PERSONS } from "./data";
 // EXERCISE: Can you replace the `unknown` types in the function below with the correct types?
 // Hint1: Use a generic parameter with an `extends` contraint
 // Hint2: The return type is based on the `property` parameter. You don't need to use function overloads for this.
-function getUniquePersonProperties(persons: Person[], property: unknown): unknown {
+function getUniquePersonProperties<TKey extends keyof Person>(persons: Person[], property: TKey): Person[TKey][] {
   return Array.from(new Set(persons.map((person) => person[property])));
 }
 

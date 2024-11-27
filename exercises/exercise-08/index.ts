@@ -17,12 +17,12 @@ import { PERSONS, SHIFTS } from "./data";
 
 // EXERCISE: Can you make the `idSelector` argument generic such that the test code below this function compiles and runs without errors?
 // You will also have to change the `unknown` types of the `Map` object at line 25.
-function getUniqueValues<TObject, TKey extends keyof TObject>(items: TObject[], property: TKey, idSelector?: (propertyValue: unknown) => unknown): TObject[TKey][] {
+function getUniqueValues<TObject, TKey extends keyof TObject>(items: TObject[], property: TKey, idSelector?: (propertyValue: TObject[TKey]) => unknown): TObject[TKey][] {
   if (!idSelector) {
     return Array.from(new Set(items.map((item) => item[property])));
   }
 
-  const uniqueValueById = new Map<unknown, unknown>();
+  const uniqueValueById = new Map<unknown, TObject[TKey]>();
   for(const item of items) {
     const propertyValue = item[property];
     const id = idSelector(propertyValue);

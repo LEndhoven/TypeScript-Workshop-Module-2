@@ -14,7 +14,7 @@ import { PERSONS, SHIFTS } from "./data";
 
 // EXERCISE: Can you replace the `unknown` types in the function below with the correct types?
 // Hint: Use two generic parameters
-function getUniqueValues(items: unknown, property: unknown): unknown {
+function getUniqueValues<TObject, TKey extends keyof TObject>(items: TObject[], property: TKey): TObject[TKey][] {
   return Array.from(new Set(items.map((item) => item[property])));
 }
 

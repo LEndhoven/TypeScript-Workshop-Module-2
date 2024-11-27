@@ -17,9 +17,7 @@ import { Questionnaire, QUESTIONNAIRE_1, QUESTIONNAIRE_2, verifyConversion } fro
  */
 
 // EXERCISE: Follow the instructions in the description above and write code directly below this
-type TupleOf<TObject> = ; // ?
-
-
+type TupleOf<TObject> = TObject extends { answer1: infer TQuestion1; answer2: infer TQuestion2 } ? [TQuestion1, TQuestion2] : never;
 
 // SOLUTION-CHECKER: Code below is to check your solution
 function convertToTuple<TQuestion1, TQuestion2>(

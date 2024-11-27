@@ -19,9 +19,13 @@ import { COMPLETED_ORDER, CompletedOrder, CONFIRMED_ORDER, ConfirmedOrder, isCom
  */
 
 // EXERCISE: Follow the instructions in the description above and write code directly below this
-type UniqueOrderPropertyType<TOrder extends Order> = ; // ?
-
-
+type UniqueOrderPropertyType<TOrder extends Order> = TOrder extends ConfirmedOrder
+  ? string
+  : TOrder extends PlannedOrder
+    ? Date
+    : TOrder extends CompletedOrder
+      ? boolean
+      : never;
 
 // SOLUTION-CHECKER: Code below is to check your solution
 function getUniquePropertyValue<TOrder extends Order>(order: TOrder): UniqueOrderPropertyType<TOrder> {

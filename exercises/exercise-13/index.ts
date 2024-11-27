@@ -17,8 +17,9 @@ import { CHECKED_REALIZED_ORDER, REALIZED_ORDER } from './models';
  */
 
 // EXERCISE: Follow the instructions in the description above and write code directly below this
-type CheckedEntity<TEntity> = ; // ?
-
+type CheckedEntity<TEntity> = {
+  [Property in keyof TEntity as `checked${Capitalize<string & Property>}`]: boolean;
+};
 
 
 // SOLUTION-CHECKER: Code below is to check your solution

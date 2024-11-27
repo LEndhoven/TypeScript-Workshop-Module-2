@@ -25,8 +25,9 @@ import { getFuelPrice, registerVehicle } from "./utilities";
 // to make sure the compiler recognizes the missing property.
 const vehicle = {
   id: '123',
-  fuelType: 'diesel'
-} as Vehicle;
+  fuelType: 'diesel',
+  brand: 'Mazda',
+} satisfies Vehicle;
 
 registerVehicle(vehicle);
-getFuelPrice(vehicle.fuelType!);
+getFuelPrice(vehicle.fuelType);

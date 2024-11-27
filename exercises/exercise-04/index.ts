@@ -14,7 +14,7 @@
  */
 
 import { logText } from "../../lib/log-utils";
-import { Vehicle } from "./models";
+import { RegisteredVehicle, Vehicle } from "./models";
 import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 
 // EXERCISE:
@@ -28,10 +28,29 @@ import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 // Make sure that in the situations where registered vehicles are requested, the return type is `RegisteredVehicle[]`?
 // And if registered vehicles are not requested, the return type is `Vehicle[]`?
 
-function findVehicles(/** define function parameters */): Vehicle[] {
+function findVehicles(): Vehicle[];
+function findVehicles(brand: string): Vehicle[];
+function findVehicles(registeredOnly: false): Vehicle[];
+function findVehicles(registeredOnly: true): RegisteredVehicle[];
+function findVehicles(brand: string, registeredOnly: true): RegisteredVehicle[];
+function findVehicles(brandOrRegisteredOnly?: string | boolean, registeredOnly?: boolean): Vehicle[] {
+  if (brandOrRegisteredOnly === undefined) {
+    return [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES];
+  }
 
-  // The function implementation should be adjusted as well.
-  return [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES];
+  if (typeof brandOrRegisteredOnly === 'boolean') {
+    return REGISTERED_VEHICLES;
+  }
+
+  if (registeredOnly === false) {
+    return [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES].filter((vehicle) => vehicle.brand === brandOrRegisteredOnly);
+  }
+
+  if (registeredOnly) {
+    return REGISTERED_VEHICLES.filter((vehicle) => vehicle.brand === brandOrRegisteredOnly);
+  }
+
+  return [...UNREGISTERED_VEHICLES, ...REGISTERED_VEHICLES].filter((vehicle) => vehicle.brand === brandOrRegisteredOnly);
 }
 
 // SOLUTION CHECKER: Code below is to check your solution

@@ -18,10 +18,7 @@ import { EMPLOYEES, SHIFT } from "./data";
 // EXERCISE: Right now, only `number`, `string`, and `boolean` types are supported.
 // Can you add support for the `Employee` and `Shift` types, but also making sure this is the last time the function needs to be updated?
 // Hint: Make use of generics
-function coerceToArray(value: number | number[]): number[];
-function coerceToArray(value: string | string[]): string[];
-function coerceToArray(value: boolean | boolean[]): boolean[];
-function coerceToArray(value: unknown | unknown[]): unknown[] {
+function coerceToArray<TValue>(value: TValue | TValue[]): TValue[] {
   return Array.isArray(value) ? value : [value];
 }
 

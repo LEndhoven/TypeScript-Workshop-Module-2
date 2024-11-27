@@ -13,7 +13,7 @@ import { logText } from "../../lib/log-utils";
 import { Vehicle, Car, Truck, Motorcycle, VehicleType } from "./models";
 
 // EXERCISE: Can you change the definition of the `VehicleTypeOf` type such that the code below compiles?
-type VehicleTypeOf<T = unknown> = Vehicle;
+type VehicleTypeOf<TVehicleType extends VehicleType> = Extract<Vehicle, { type: TVehicleType }>;
 
 // SOLUTION CHECKER: Code below is to check your solution
 

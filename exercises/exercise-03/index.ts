@@ -12,11 +12,13 @@
  */
 
 import { logText } from "../../lib/log-utils";
-import { Vehicle } from "./models";
+import { RegisteredVehicle, Vehicle } from "./models";
 import { REGISTERED_VEHICLES, UNREGISTERED_VEHICLES } from "./data";
 
 // EXERCISE: Can you add function overloads for this function such that when only registered vehicles requested, the return type is `RegisteredVehicle[]`?
 // And if the `registeredOnly` property is not set to `true`, the return type is `Vehicle[]`?
+function findVehicles(brand: string): Vehicle[];
+function findVehicles(brand: string, registeredOnly: true): RegisteredVehicle[];
 function findVehicles(brand: string, registeredOnly?: boolean): Vehicle[] {
   return [...REGISTERED_VEHICLES, ...(registeredOnly ? [] : UNREGISTERED_VEHICLES)].filter(vehicle => vehicle.brand === brand);
 }

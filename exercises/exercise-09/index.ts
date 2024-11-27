@@ -18,7 +18,7 @@ import { Shift } from "./model";
 // EXERCISE: Can you improve the definition of the `BreakWindowedShift` type such that the `breakWindows` property is required?
 // Try not to redeclare the complete structure of the `breakWindows` property
 // Hint: Use an intersection type combined with some TypeScript utility types.
-type BreakWindowedShift = Shift;
+type BreakWindowedShift = Shift & Required<Pick<Shift, 'breakWindows'>>;
 
 
 // SOLUTION CHECKER: Code below is to check your solution
